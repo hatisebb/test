@@ -1,32 +1,209 @@
 body {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif; /* Kid-friendly fonts */
+    margin: 0;
+    padding: 10px; /* Adjusted padding */
+    background-color: #87CEEB; /* Sky Blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333; /* Darker text for readability */
+}
+
+#game-container {
+    background-color: #FFDAB9; /* Peach Puff background for the container */
+    padding: 25px;
+    border-radius: 20px; /* More rounded corners */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Softer, more pronounced shadow */
+    width: 90%; /* Responsive width */
+    max-width: 700px; /* Max width */
     text-align: center;
-    font-family: Arial, sans-serif;
+    border: 5px solid #FFB6C1; /* Light Pink border */
 }
 
-#gameCanvas {
-    border: 1px solid black;
-    background-color: #f0f0f0; /* Light gray background for the canvas */
+#header {
+    display: flex;
+    justify-content: space-around; /* Better spacing for header items */
+    align-items: center; /* Vertically align items */
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px dashed #FF69B4; /* Hot Pink dashed border */
 }
 
-/* Basic style for the player - will be a colored rectangle for now */
-.player {
-    background-color: blue;
-    width: 50px; /* Example width */
-    height: 20px; /* Example height */
+#score-area, #level-area, #timer-area {
+    font-size: 1.4em; /* Larger font for header items */
+    font-weight: bold;
+    color: #fff; /* White text */
+    background-color: #FF69B4; /* Hot Pink background */
+    padding: 10px 15px;
+    border-radius: 10px;
+    min-width: 100px; /* Minimum width for uniform look */
 }
 
-/* Basic style for cookies - will be a colored circle for now */
-.cookie {
-    background-color: brown;
-    width: 20px; /* Example width */
-    height: 20px; /* Example height */
-    border-radius: 50%; /* Make it circular */
+#timer-area {
+    background-color: #FFA07A; /* Light Salmon for timer */
+    animation: pulse 1s infinite alternate; /* Simple pulse for timer */
 }
 
-/* Style for golden cookies */
-.golden-cookie {
-    background-color: gold;
-    width: 25px; /* Slightly larger */
-    height: 25px; /* Slightly larger */
-    border-radius: 50%;
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+#question-area {
+    margin-bottom: 25px;
+    min-height: 60px;
+}
+
+#question-text {
+    font-size: 1.6em; /* Larger question text */
+    color: #483D8B; /* Dark Slate Blue */
+    font-weight: bold;
+}
+
+#answer-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive buttons */
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.answer-btn {
+    padding: 20px; /* Larger padding for bigger buttons */
+    font-size: 1.2em; /* Larger font for answers */
+    font-weight: bold;
+    cursor: pointer;
+    border: 3px solid #FF6347; /* Tomato border */
+    background-color: #FFFFE0; /* Light Yellow background */
+    color: #FF6347; /* Tomato text */
+    border-radius: 15px; /* More rounded buttons */
+    transition: transform 0.1s ease, background-color 0.2s ease; /* Smooth transitions */
+}
+
+.answer-btn:hover {
+    background-color: #FFFACD; /* Lemon Chiffon on hover */
+    transform: scale(1.03); /* Slight scale effect on hover */
+}
+
+.answer-btn:active {
+    transform: scale(0.98); /* Click effect */
+}
+
+/* Styles for when buttons are disabled or show correct/incorrect */
+.answer-btn.correct {
+    background-color: #90EE90 !important; /* Light Green */
+    color: #fff !important;
+    border-color: #3CB371 !important; /* Medium Sea Green */
+}
+
+.answer-btn.incorrect {
+    background-color: #F08080 !important; /* Light Coral */
+    color: #fff !important;
+    border-color: #CD5C5C !important; /* Indian Red */
+}
+
+.answer-btn:disabled:not(.correct):not(.incorrect) { /* Style for other disabled buttons */
+    background-color: #d3d3d3; /* Light grey */
+    color: #777;
+    border-color: #bbb;
+    cursor: not-allowed;
+}
+
+
+#feedback-area {
+    min-height: 35px;
+    margin-bottom: 20px;
+}
+
+#feedback-text {
+    font-size: 1.3em; /* Larger feedback text */
+    font-weight: bold;
+}
+
+/* Make feedback colors more vibrant */
+#feedback-text.correct {
+    color: #228B22; /* Forest Green */
+}
+
+#feedback-text.incorrect {
+    color: #DC143C; /* Crimson */
+}
+
+#feedback-text.timeout {
+    color: #FF8C00; /* Dark Orange */
+}
+
+
+#controls-area button {
+    padding: 12px 25px; /* Larger control buttons */
+    font-size: 1.1em;
+    margin: 8px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+#next-question-btn {
+    background-color: #4682B4; /* Steel Blue */
+}
+#next-question-btn:hover {
+    background-color: #5A9BDC; /* Lighter Steel Blue */
+}
+
+#restart-btn {
+    background-color: #32CD32; /* Lime Green */
+}
+#restart-btn:hover {
+    background-color: #54E054; /* Lighter Lime Green */
+}
+
+
+/* Multiplayer section - keeping it simple for now */
+#multiplayer-setup {
+    margin-top: 25px;
+    padding: 15px;
+    border-top: 3px dashed #FF69B4; /* Hot Pink dashed border */
+    background-color: #FFF0F5; /* Lavender Blush */
+    border-radius: 10px;
+}
+#multiplayer-setup h2 {
+    color: #DB7093; /* Pale Violet Red */
+}
+#multiplayer-setup input, #multiplayer-setup button {
+    padding: 12px;
+    margin: 8px;
+    font-size: 1em;
+    border-radius: 8px;
+    border: 2px solid #FFB6C1; /* Light Pink */
+}
+#multiplayer-setup button {
+    background-color: #FFB6C1; /* Light Pink */
+    color: #fff;
+    font-weight: bold;
+}
+#multiplayer-setup button:hover {
+    background-color: #FFC1CB; /* Lighter Pink */
+}
+
+/* Placeholder for cartoon avatars - can be implemented with images or more complex CSS later */
+/* For now, we'll just ensure the structure allows for it */
+#player-avatars-area {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.avatar-placeholder {
+    width: 60px;
+    height: 60px;
+    background-color: #ADD8E6; /* Light Blue */
+    border-radius: 50%; /* Circular avatars */
+    border: 3px solid #4682B4; /* Steel Blue */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: white;
 }

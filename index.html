@@ -1,12 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Catch the Cookie!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Trivia Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Catch the Cookie!</h1>
-    <canvas id="gameCanvas" width="480" height="320"></canvas>
+    <div id="game-container">
+        <div id="header">
+            <div id="score-area">Score: <span id="score">0</span></div>
+            <div id="level-area">Level: <span id="level">1</span></div>
+            <div id="timer-area">Time: <span id="timer">30</span>s</div>
+        </div>
+
+        <div id="question-area">
+            <p id="question-text">Question will appear here...</p>
+        </div>
+
+        <div id="answer-buttons">
+            <button class="answer-btn" id="btn-A" data-answer-id="A">A) Answer A</button>
+            <button class="answer-btn" id="btn-B" data-answer-id="B">B) Answer B</button>
+            <button class="answer-btn" id="btn-C" data-answer-id="C">C) Answer C</button>
+            <button class="answer-btn" id="btn-D" data-answer-id="D">D) Answer D</button>
+        </div>
+
+        <div id="feedback-area">
+            <p id="feedback-text"></p>
+        </div>
+
+        <div id="controls-area">
+            <button id="next-question-btn" style="display: none;">Next Question</button>
+            <button id="restart-btn" style="display: none;">Restart Game</button>
+        </div>
+
+        <!-- Multiplayer specific elements - hidden for now -->
+        <div id="multiplayer-setup" style="display:none;">
+            <h2>Multiplayer Game</h2>
+            <input type="text" id="game-code-input" placeholder="Enter 4-digit code">
+            <button id="join-game-btn">Join Game</button>
+            <button id="create-game-btn">Create Game</button>
+            <div id="game-code-display"></div>
+        </div>
+        <div id="player-list-area" style="display:none;">
+            <h3>Players:</h3>
+            <ul id="player-list"></ul>
+        </div>
+
+    </div>
+
+    <script src="questions.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
