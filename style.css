@@ -1,0 +1,32 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#gameCanvas {
+    border: 1px solid black;
+    background-color: #f0f0f0; /* Light gray background for the canvas */
+}
+
+/* Basic style for the player - will be a colored rectangle for now */
+.player {
+    background-color: blue;
+    width: 50px; /* Example width */
+    height: 20px; /* Example height */
+}
+
+/* Basic style for cookies - will be a colored circle for now */
+.cookie {
+    background-color: brown;
+    width: 20px; /* Example width */
+    height: 20px; /* Example height */
+    border-radius: 50%; /* Make it circular */
+}
+
+/* Style for golden cookies */
+.golden-cookie {
+    background-color: gold;
+    width: 25px; /* Slightly larger */
+    height: 25px; /* Slightly larger */
+    border-radius: 50%;
+}
